@@ -44,7 +44,7 @@ parts:
         snapcraftctl build
         snapcraftctl set-version "$(git describe --tags 2>/dev/null || echo 1.0)"
         mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
-        cp -R ./* $SNAPCRAFT_PART_INSTALL/share/themes/
+        cp -LR ./* $SNAPCRAFT_PART_INSTALL/share/themes/
         rm -rf ./*
         $SNAPCRAFT_STAGE/split-gtk-theme.sh $SNAPCRAFT_PART_INSTALL
     stage:
@@ -60,7 +60,7 @@ parts:
     override-build: |
         snapcraftctl build
         mkdir -p $SNAPCRAFT_PART_INSTALL/share/icons
-        cp -R ./* $SNAPCRAFT_PART_INSTALL/share/icons/
+        cp -LR ./* $SNAPCRAFT_PART_INSTALL/share/icons/
         rm -rf ./*
         $SNAPCRAFT_STAGE/update-icon-cache.sh $SNAPCRAFT_PART_INSTALL/share/icons
     stage:
