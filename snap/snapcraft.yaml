@@ -43,8 +43,6 @@ parts:
     override-build: |
         snapcraftctl build
         snapcraftctl set-version "$(git describe --tags 2>/dev/null || echo 1.0)"
-        echo src $SNAPCRAFT_PART_SRC
-        export | grep SNAPCRAFT
         mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
         mv ./* $SNAPCRAFT_PART_INSTALL/share/themes/
         $SNAPCRAFT_STAGE/split-gtk-theme.sh $SNAPCRAFT_PART_INSTALL
